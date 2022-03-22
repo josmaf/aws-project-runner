@@ -78,13 +78,13 @@ The project to be run must meet the following requirements:
 # Improvements (Technical debt & functional scope)
 
 ## Functional (what)
-Allow more than one execution per AWS account (currently: names & permission conflicts)
-Allow to use GPUs instances
-Fine-grained detail of infrastructure to be kept/destroyed after running
-Allow to check job status
-Cost calculator (before execution: cost estimation. After execution: how much did it cost?)
-Send email when job is finished
-Allow using EC2 spot instances (cheaper)
+- Allow choosing EC2 instance features: type, number of CPU cores, GPU
+- Allow more than one execution per AWS account (currently: names & permission conflicts)
+- Fine-grained detail of infrastructure to be kept/destroyed after running
+- Allow to check job status
+- Cost calculator (before execution: cost estimation. After execution: how much did it cost?)
+- Send email when job is finished
+- Allow using EC2 spot instances (cheaper)
 
 ## Technical (how)
 Check file already exists before sending objects to S3 to minimize network traffic
