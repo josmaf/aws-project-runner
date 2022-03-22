@@ -11,17 +11,17 @@ Almost no AWS setup required, no risk of leaving costly AWS resources behind aft
 
 ## Problem
 
-1. We've got a piece of local Python code that: 
+1. Scenario: we have a piece of local Python code that: 
 	- Reads data
 	- Process data 
 	- Generate an output
-2. In order to so, it needs: code (environment dependencies) & hardware
+2. In order to do its job, that code needs: ardware & more code (environment, dependencies...)
 3. Sometimes we need to change both quickly: try with more/less CPU cores, GPUs, memory, add/edit dependencies, etc.
 
 
 ## Exploration
 
-Multiple Cloud vendors offer multiple tools to use their environments, but:
+Multiple Cloud vendors offer multiple tools to run things in their environments, but:
 
 - Overkill solutions 
 - Steep learning curve
@@ -33,7 +33,7 @@ Multiple Cloud vendors offer multiple tools to use their environments, but:
 
 ### **What**:
 
-Custom library/Decorator/App to automate data managing and code execution in AWS (by now):
+Custom library/Decorator/App (to be decided) to automate data managing and code execution in AWS (by now):
 
 0. Clean & create infrastructure
 1. Send all-what-is-needed to S3: input data, code, auxiliary files  
@@ -42,9 +42,8 @@ Custom library/Decorator/App to automate data managing and code execution in AWS
 4. Run image as a container in EC2 or ECS (currently exploring...). The container must be able to:              
 	a. Download data from S3 to the container file system
 	b. Run code
-	c. Send results from the container file system to S3
-5. Send link to folder in S3 to user
-6. Destroy all the infrastructure used except the S3 bucket and the ECR repository
+	c. Send results from the container file system to S3, and a http link to the S3 console to the user
+5. Destroy all the infrastructure used except the S3 bucket and the ECR repository
 
 
 ### **How**:
@@ -55,7 +54,7 @@ Tech stack:
 - Shell scripting
 - AWS IAM: https://aws.amazon.com/es/iam/
 - AWS EC2: https://aws.amazon.com/es/ec2/
-- AWS ECS?: might be
+- AWS ECS: possible
 - AWS SSM: https://aws.amazon.com/es/systems-manager/
 - AWS ECR: https://aws.amazon.com/es/ecr/
 
@@ -91,10 +90,6 @@ Check file already exists before sending objects to S3 to minimize network traff
 Implement exponential back-off in SSM calls
 Use non-admin account internally to minimize security leaks
 Use EC2 Image Builder?
-
-
-
-
 
 
 
