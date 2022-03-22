@@ -36,14 +36,15 @@ Multiple Cloud vendors offer multiple tools to run things in their environments,
 Custom library/Decorator/App (to be decided) to automate data managing and code execution in AWS (by now):
 
 0. Clean & create infrastructure
-1. Send all-what-is-needed to S3: input data, code, auxiliary files  
-2. Build Docker image in EC2
-3. Send Docker image to ECR
-4. Run image as a container in EC2 or ECS (currently exploring...). The container must be able to:              
+1. Send all-what-is-needed to S3: input data, code, auxiliary files 
+2. Launch EC2 instance 
+3. Build Docker image in EC2
+4. Send Docker image to ECR
+5. Run image as a container in EC2 or ECS (currently exploring...). The container must be able to:              
 	a. Download data from S3 to the container file system
 	b. Run code
 	c. Send results from the container file system to S3, and a http link to the S3 console to the user
-5. Destroy all the infrastructure used except the S3 bucket and the ECR repository
+6. Destroy all the infrastructure used except the S3 bucket and the ECR repository
 
 
 ### **How**:
