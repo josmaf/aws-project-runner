@@ -1,3 +1,9 @@
+# **IMPORTANT!**
+
+Work in progress. NOT A WORKING PROJECT
+
+
+
 # Intro (start here)
 
 Project to launch Python projects in AWS.
@@ -15,7 +21,7 @@ Almost no AWS setup required, no risk of leaving costly AWS resources behind aft
 	- Reads data
 	- Process data 
 	- Generate an output
-2. In order to do its job, that code needs: ardware & more code (environment, dependencies...)
+2. In order to do its job, that code needs specific hardware & more code (environment, dependencies...)
 3. Sometimes we need to change both quickly: try with more/less CPU cores, GPUs, memory, add/edit dependencies, etc.
 
 
@@ -37,7 +43,7 @@ Custom library/Decorator/App (to be decided) to automate data managing and code 
 
 0. Clean & create infrastructure
 1. Send all-what-is-needed to S3: input data, code, auxiliary files 
-2. Launch EC2 instance 
+2. Launch EC2 instance and download project code from S3
 3. Build Docker image in EC2
 4. Send Docker image to ECR
 5. Run image as a container in EC2 or ECS (currently exploring...). The container must be able to:              
@@ -55,34 +61,27 @@ Tech stack:
 - Shell scripting
 - AWS IAM: https://aws.amazon.com/es/iam/
 - AWS EC2: https://aws.amazon.com/es/ec2/
-- AWS ECS: possible
+- AWS ECS: https://aws.amazon.com/es/ecs/
 - AWS SSM: https://aws.amazon.com/es/systems-manager/
 - AWS ECR: https://aws.amazon.com/es/ecr/
 
-
-### Problems found
-
-Changing AWS APIs and doc
-Non-deterministic behaviours  (network variability, AWS internal time to apply changes -roles, permissions...)
-
-
-# Project-to-be-run requirements
+# Local project to-be-run requirements
 
 The project to be run must meet the following requirements:
 
 1. The script and all the imported modules must be packaged within a parent folder
-2. The parent folder must have a requirements.txt file
-3. Script must include two mandatory arguments: "-i" (input folder full path) and "-o" (output folder full path) 
+2. The parent folder must have a 'requirements.txt' file and a script to run the project, named 'app.py'
+3. 'app.py' script must include two mandatory arguments: "-i" (input folder full path) and "-o" (output folder full path) 
 
 
-# Improvements (Technical debt & functional scope)
+# Roadmap
 
 ## Functional (what)
 - Allow choosing EC2 instance features: type, number of CPU cores, GPU
-- Allow more than one execution per AWS account (currently: names & permission conflicts)
+- Allow more than one execution per AWS account (currently: naming & permission conflicts)
 - Fine-grained detail of infrastructure to be kept/destroyed after running
 - Allow to check job status
-- Cost calculator (before execution: cost estimation. After execution: how much did it cost?)
+- Cost calculator (After execution: how much did it cost?)
 - Send email when job is finished
 - Allow using EC2 spot instances (cheaper)
 
@@ -90,7 +89,9 @@ The project to be run must meet the following requirements:
 Check file already exists before sending objects to S3 to minimize network traffic
 Implement exponential back-off in SSM calls
 Use non-admin account internally to minimize security leaks
-Use EC2 Image Builder?
+Use EC2 Image Builder
 
+# Usage
 
+TODO
 

@@ -3,7 +3,7 @@ from apr import iac
 import unittest
 
 
-role_name = 'aws-script-runner-sms-role'
+role_name = 'aws-project-runner-sms-role'
 instance_id = '<INSTANCE_ID>'
 
 
