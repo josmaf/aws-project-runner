@@ -2,7 +2,7 @@
 
 Project to launch Python projects in AWS.
 
-It uploads your data & code to AWS and run it on the infrastructure you desire.
+It uploads your data & code to AWS and run it on the infrastructure you need.
 
 Almost no AWS setup required, no risk of leaving costly AWS resources behind after use.
 
@@ -11,10 +11,10 @@ Almost no AWS setup required, no risk of leaving costly AWS resources behind aft
 
 ## Problem
 
-1. We've got a piece of local Python code that: 
+1. You've got in your machine a piece of Python code that: 
 	- Reads data
 	- Process data 
-	- Generate an output
+	- Generate new data
 2. In order to so, it needs: code (environment dependencies) & hardware
 3. Sometimes we need to change both quickly: try with more/less CPU cores, GPUs, memory, add/edit dependencies, etc.
 
@@ -31,20 +31,19 @@ Multiple Cloud vendors offer multiple tools to use their environments, but:
 
 ## Solution
 
-### **What**:
+### **The What**:
 
-Custom library/Decorator/App to automate data managing and code execution in AWS (by now):
+Tool to automate data managing and code execution in AWS (by now):
 
-0. Clean & create infrastructure
+0. Create AWS infrastructure
 1. Send all-what-is-needed to S3: input data, code, auxiliary files  
-2. Build Docker image in EC2
-3. Send Docker image to ECR
-4. Run image as a container in EC2 or ECS (currently exploring...). The container must be able to:              
+2. Build & save your Docker image in the cloud
+3. Run image as a container in the cloud. The container will automatically:              
 	a. Download data from S3 to the container file system
 	b. Run code
 	c. Send results from the container file system to S3
 5. Send link to folder in S3 to user
-6. Destroy all the infrastructure used except the S3 bucket and the ECR repository
+6. Destroy all the infrastructure used except the S3 bucket and the image repository
 
 
 ### **How**:
@@ -66,7 +65,7 @@ Changing AWS APIs and doc
 Non-deterministic behaviours  (network variability, AWS internal time to apply changes -roles, permissions...)
 
 
-# Project-to-be-run requirements
+# Project to-be-run-in-the-cloud requirements
 
 The project to be run must meet the following requirements:
 
